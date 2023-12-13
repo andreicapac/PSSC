@@ -17,6 +17,26 @@ namespace PSSC_S3
             Produse.Add(produs1);
             Produse.Add(produs2);
 
+
+            PublicareComandaCommand command = new (client1, Produse);
+            PublicareComandaWorkflow workflow = new PublicareComandaWorkflow();
+
+            var result = workflow.Execute(command, (var)=> true);
+
+            result.Match(
+                    whenComandaPublicareFailEvent: @event =>
+                    {
+                        Console.WriteLine($"Publish failed: {@event.Reason}");
+                        return @event;
+                    },
+                    whenComandaPublicareSucceedEvent: @event =>
+                    {
+                        Console.WriteLine($"Publish succeeded.");
+                        Console.WriteLine(@event.Csv);
+                        return @event;
+                    }
+                );
+
             Console.WriteLine("Final de program!");
    
 
