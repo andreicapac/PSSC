@@ -12,7 +12,7 @@ namespace PSSC_S3
             Produs produs1 = new Produs(new Cantitate.CantitateKg(1), "cod1", "adresa");
             Produs produs2 = new Produs(new Cantitate.CantitateUnitati(39), "cod2", "adresa1");
             Produs produs3 = new Produs(new Cantitate.CantitateKg(1), "cod3", "adresa2");
-            Client client1 = new Client("Iulia", "Jubea", "1234");
+            Client client1 = new Client("Iulian", "Birladeanu", "1234");
             List<Produs> Produse=new List<Produs>();
             Produse.Add(produs1);
             Produse.Add(produs2);
